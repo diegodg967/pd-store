@@ -1,3 +1,5 @@
+import { SelectWrapper } from './styles';
+
 interface SelectOption {
   value: string;
   label: string;
@@ -11,12 +13,12 @@ interface SelectProps {
 
 export const Select = ({ onChange, options, value }: SelectProps) => {
   return (
-    <select value={value} onChange={onChange}>
+    <SelectWrapper value={value} onChange={onChange}>
       {options.map((option) => (
-        <option key={option.value} value="price-asc">
+        <option key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}
-    </select>
+    </SelectWrapper>
   );
 };

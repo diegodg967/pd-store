@@ -74,7 +74,7 @@ export const BuyBoxProductRemoveWrapper = styled.div`
   justify-content: flex-start;
 `;
 
-export const BuyBoxSubtotal = styled.p`
+export const BuyBoxSubtotal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

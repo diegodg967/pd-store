@@ -5,7 +5,13 @@ import { useProducts } from '../../hooks/useProducts';
 import { Header, HeroBanner, ProductCard, Select } from '../../components';
 import { IProduct } from '../../types/product';
 
-import { GridBuyBox, GridContainer, GridProducts } from './styles';
+import {
+  GridBuyBox,
+  GridContainer,
+  GridProducts,
+  LoadingProducts,
+  LoadingSpinner,
+} from './styles';
 
 interface SortOptions {
   type: string;
@@ -15,19 +21,19 @@ interface SortOptions {
 const productsFilterOptions = [
   {
     label: 'Title - A to Z',
-    value: 'price-asc',
-  },
-  {
-    label: 'Title - Z to A',
-    value: 'price-desc',
-  },
-  {
-    label: 'Highest Price',
     value: 'title-asc',
   },
   {
-    label: 'Lowest Price',
+    label: 'Title - Z to A',
     value: 'title-desc',
+  },
+  {
+    label: 'Highest Price',
+    value: 'price-asc',
+  },
+  {
+    label: 'Lowest Price',
+    value: 'price-desc',
   },
 ];
 
@@ -66,10 +72,6 @@ export const Home = () => {
     }
   });
 
-  if (loadingProducts) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <Header />
@@ -83,14 +85,20 @@ export const Home = () => {
               value={`${sortOptions.type}-${sortOptions.direction}`}
             />
           </div>
-          <GridProducts>
-            {products &&
-              sortedProducts.map((product) => (
-                <div key={product.id}>
-                  <ProductCard product={product} />
-                </div>
-              ))}
-          </GridProducts>
+          {loadingProducts ? (
+            <LoadingProducts>
+              <LoadingSpinner />
+            </LoadingProducts>
+          ) : (
+            <GridProducts>
+              {products &&
+                sortedProducts.map((product) => (
+                  <div key={product.id}>
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+            </GridProducts>
+          )}
         </div>
         <GridBuyBox>
           <BuyBox />

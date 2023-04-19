@@ -1,4 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const GridContainer = styled.div`
   display: grid;
@@ -40,4 +46,22 @@ export const GridBuyBox = styled.div`
   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
     display: block;
   }
+`;
+
+export const LoadingProducts = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 160px 0;
+`;
+
+export const LoadingSpinner = styled.div`
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: ${(props) => props.theme.colors.primary};
+  border-radius: 50%;
+  animation: ${spin} 1s linear infinite;
 `;
