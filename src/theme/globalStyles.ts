@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${theme.colors.surface};
+    background: ${theme.colors.suface};
     font-family: 'Work Sans', sans-serif;
+    color: ${theme.colors.black};
   }
 `;

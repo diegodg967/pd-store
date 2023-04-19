@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { BuyBox } from '../../components/BuyBox';
 
-import { ProductCard } from '../../components/ProductCard';
-import { RootState } from '../../redux';
-import { useGetProductsQuery } from '../../redux/products';
+import { useProducts } from '../../hooks/useProducts';
+import { Header, HeroBanner, ProductCard, Select } from '../../components';
 import { IProduct } from '../../types/product';
 
 import { GridBuyBox, GridContainer, GridProducts } from './styles';
@@ -14,9 +12,27 @@ interface SortOptions {
   direction: string;
 }
 
+const productsFilterOptions = [
+  {
+    label: 'Title - A to Z',
+    value: 'price-asc',
+  },
+  {
+    label: 'Title - Z to A',
+    value: 'price-desc',
+  },
+  {
+    label: 'Highest Price',
+    value: 'title-asc',
+  },
+  {
+    label: 'Lowest Price',
+    value: 'title-desc',
+  },
+];
+
 export const Home = () => {
-  const { isLoading } = useGetProductsQuery();
-  const products = useSelector((state: RootState) => state.products);
+  const { loadingProducts, products } = useProducts();
   const [sortOptions, setSortOptions] = useState<SortOptions>({
     type: 'title',
     direction: 'asc',
@@ -50,36 +66,36 @@ export const Home = () => {
     }
   });
 
-  if (isLoading) {
+  if (loadingProducts) {
     return <div>Loading...</div>;
   }
 
   return (
-    <GridContainer>
-      <div>
+    <>
+      <Header />
+      <HeroBanner />
+      <GridContainer>
         <div>
-          <select
-            value={`${sortOptions.type}-${sortOptions.direction}`}
-            onChange={handleSortChange}
-          >
-            <option value="price-asc">Price (Low to High)</option>
-            <option value="price-desc">Price (High to Low)</option>
-            <option value="title-asc">Title (A to Z)</option>
-            <option value="title-desc">Title (Z to A)</option>
-          </select>
+          <div>
+            <Select
+              onChange={handleSortChange}
+              options={productsFilterOptions}
+              value={`${sortOptions.type}-${sortOptions.direction}`}
+            />
+          </div>
+          <GridProducts>
+            {products &&
+              sortedProducts.map((product) => (
+                <div key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+          </GridProducts>
         </div>
-        <GridProducts>
-          {products &&
-            sortedProducts.map((product) => (
-              <div key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-        </GridProducts>
-      </div>
-      <GridBuyBox>
-        <BuyBox />
-      </GridBuyBox>
-    </GridContainer>
+        <GridBuyBox>
+          <BuyBox />
+        </GridBuyBox>
+      </GridContainer>
+    </>
   );
 };

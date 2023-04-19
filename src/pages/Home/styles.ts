@@ -30,6 +30,7 @@ export const GridProducts = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     grid-template-columns: repeat(2, 1fr);
+    gap: ${(props) => props.theme.spacing.md};
   }
 `;
 

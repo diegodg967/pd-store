@@ -1,15 +1,17 @@
-import { ButtonHTMLAttributes, SyntheticEvent } from 'react';
+import { ButtonHTMLAttributes, ReactNode, SyntheticEvent } from 'react';
 
-import { ButtonWrapper } from './styles';
+import { ButtonWrapper, IconWrapper } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLDivElement> {
+  icon?: ReactNode;
   label: string;
   noPadding?: boolean;
   onClick: (event: SyntheticEvent<HTMLDivElement>) => unknown;
-  buttonType?: 'primary' | 'secondary';
+  buttonType?: 'primary' | 'secondary' | 'grey';
 }
 
 export const Button = ({
+  icon,
   label,
   noPadding = false,
   onClick,
@@ -22,6 +24,7 @@ export const Button = ({
       buttonType={buttonType}
     >
       {label}
+      {icon && <IconWrapper>{icon}</IconWrapper>}
     </ButtonWrapper>
   );
 };

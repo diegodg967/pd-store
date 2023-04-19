@@ -1,4 +1,45 @@
-export const theme = {
+import { DefaultTheme } from 'styled-components';
+
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    borderRadius: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
+    colors: {
+      primary: string;
+      black: string;
+      suface: string;
+      white: string;
+    };
+    fontSizes: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+    };
+    spacing: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
+  }
+}
+
+export const theme: DefaultTheme = {
   borderRadius: {
     xs: '4px',
     sm: '8px',
@@ -15,7 +56,7 @@ export const theme = {
   colors: {
     primary: '#13649D',
     black: '#1B1B1B',
-    surface: '#F5F3F6',
+    suface: '#F5F3F6',
     white: '#FCFCFD',
   },
   fontSizes: {
@@ -23,6 +64,8 @@ export const theme = {
     sm: '14px',
     md: '16px',
     lg: '18px',
+    xl: '24px',
+    xxl: '32px',
   },
   spacing: {
     xs: '4px',

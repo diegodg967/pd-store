@@ -1,11 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+
 import { fetchApi } from './fetch';
-import productsReducer from './products/productsSlice';
+import cartSlice from './cart/cartSlice';
+import productsSlice from './products/productsSlice';
 
 const rootReducer = combineReducers({
+  cart: cartSlice,
   [fetchApi.reducerPath]: fetchApi.reducer,
-  products: productsReducer,
+  products: productsSlice,
 });
 
 const store = configureStore({
