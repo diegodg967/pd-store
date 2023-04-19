@@ -29,11 +29,11 @@ const productsFilterOptions = [
   },
   {
     label: 'Highest Price',
-    value: 'price-asc',
+    value: 'price-desc',
   },
   {
     label: 'Lowest Price',
-    value: 'price-desc',
+    value: 'price-asc',
   },
 ];
 
