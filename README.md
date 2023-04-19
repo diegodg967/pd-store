@@ -6,7 +6,7 @@
 
 ## Demo
 
-[https://pd-store-6ziw5sayl-diegodg.vercel.app/](https://pd-store-6ziw5sayl-diegodg.vercel.app/)
+[https://pd-store-diegodg.vercel.app/](https://pd-store-diegodg.vercel.app/)
 
 ---
 
