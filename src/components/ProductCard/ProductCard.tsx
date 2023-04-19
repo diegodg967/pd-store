@@ -1,4 +1,5 @@
 import { SyntheticEvent } from 'react';
+
 import { IProduct } from '../../types/product';
 import { Button } from '../Button';
 import { Card } from '../Card';
@@ -38,7 +39,12 @@ export const ProductCard = ({ product }: Props) => {
         <ProductPrice>{product.variants[0].price}</ProductPrice>
       </ProductDetails>
       <ProductButtons>
-        <Button label="See more" onClick={handleSeeMore} />
+        <Button
+          label="See more"
+          noPadding
+          onClick={handleSeeMore}
+          buttonType="secondary"
+        />
         <Button label="Add to cart" onClick={handleAddToCart} />
       </ProductButtons>
     </Card>

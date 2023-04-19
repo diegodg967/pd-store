@@ -7,6 +7,7 @@ export const CardWrapper = styled.div<{
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   padding: ${(props) => props.theme.spacing.md};
   border-radius: ${(props) => props.theme.borderRadius.sm};
   background: ${(props) => props.theme.colors.white};
@@ -22,5 +23,5 @@ export const CardWrapper = styled.div<{
       :hover {
         transform: scale(1.05);
       }
-    `}
+    `};
 `;

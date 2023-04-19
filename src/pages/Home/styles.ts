@@ -9,7 +9,7 @@ export const GridContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding-top: ${(props) => props.theme.spacing.xl};
+  padding: ${(props) => props.theme.spacing.xl} 0;
 
   @media (max-width: ${(props) => props.theme.breakpoints.lg}) {
     grid-template-columns: 1fr;

@@ -18,6 +18,12 @@ export const theme = {
     surface: '#F5F3F6',
     white: '#FCFCFD',
   },
+  fontSizes: {
+    xs: '12px',
+    sm: '14px',
+    md: '16px',
+    lg: '18px',
+  },
   spacing: {
     xs: '4px',
     sm: '8px',
