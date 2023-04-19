@@ -22,6 +22,7 @@ declare module 'styled-components' {
       white: string;
     };
     fontSizes: {
+      xxs: string;
       xs: string;
       sm: string;
       md: string;
@@ -60,6 +61,7 @@ export const theme: DefaultTheme = {
     white: '#FCFCFD',
   },
   fontSizes: {
+    xxs: '10px',
     xs: '12px',
     sm: '14px',
     md: '16px',
