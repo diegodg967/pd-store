@@ -15,6 +15,17 @@ export const productsSlice = createSlice({
         const parsedProducts: IProduct[] =
           action.payload?.products?.map((product) => ({
             id: product.id,
+            title: product.title,
+            variants: product?.variants?.map(
+              ({ featured_image, id, price, title }) => ({
+                id,
+                featured_image: {
+                  src: featured_image?.src,
+                },
+                price,
+                title,
+              })
+            ),
           })) ?? [];
 
         return parsedProducts;

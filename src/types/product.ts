@@ -1,9 +1,10 @@
 export interface IProductResponseVariant {
   id: string;
-  price: string | number;
   featured_image: {
     src: string;
   };
+  price: string | number;
+  title: string;
 }
 
 export interface IProductResponse {
@@ -18,4 +19,6 @@ export interface IProductsResponse {
 
 export interface IProduct {
   id: string;
+  title: string;
+  variants: IProductResponseVariant[];
 }
